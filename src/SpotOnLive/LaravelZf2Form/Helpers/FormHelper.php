@@ -160,8 +160,63 @@ class FormHelper
      */
     public function element(ElementInterface $element = null)
     {
-        $helper = new Helper\FormElement();
-        return $helper->__invoke($element);
+        $method = str_replace(
+            'Zend\Form\Element\\',
+            '',
+            get_class($element)
+        );
+
+        $className = '\Zend\Form\View\Helper\Form' . $method;
+
+        if (class_exists($className)) {
+            /** @var AbstractHelper|null $helper */
+            $helper = new $className;
+        }
+
+        if ($parentClass = $this->parentClassName($method)) {
+            $method = str_replace(
+                'Zend\Form\Element\\',
+                '',
+                $parentClass
+            );
+
+            $className = '\Zend\Form\View\Helper\Form' . $method;
+
+            if (class_exists($className)) {
+                /** @var AbstractHelper|null $helper */
+                $helper = new $className;
+            }
+        }
+
+        if ($helper) {
+            $label = new \Zend\Form\View\Helper\FormLabel();
+            $elementErrors = new \Zend\Form\View\Helper\FormElementErrors();
+
+            $return = $label->__invoke($element);
+            $return .= $helper->render($element);
+            $return .= $elementErrors->__invoke($element);
+
+            return $return;
+        }
+
+        return '';
+    }
+
+    /**
+     * Get parent class name
+     *
+     * @param $className
+     * @return bool|string
+     */
+    public function parentClassName($className)
+    {
+        if (!class_exists($className)) {
+            return false;
+        }
+
+        $class = new $className;
+
+        return get_parent_class($class);
     }
 
     /**
