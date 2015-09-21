@@ -1,6 +1,8 @@
 ## Zend Framework 2 forms for Laravel 5.1
 ZF2 form integration for Laravel 5.1
 
+[![Latest Stable Version](https://poser.pugx.org/spotonlive/sl-laravel-zf2-form/v/stable)](https://packagist.org/packages/spotonlive/sl-laravel-zf2-form) [![Total Downloads](https://poser.pugx.org/spotonlive/sl-laravel-zf2-form/downloads)](https://packagist.org/packages/spotonlive/sl-laravel-zf2-form) [![Latest Unstable Version](https://poser.pugx.org/spotonlive/sl-laravel-zf2-form/v/unstable)](https://packagist.org/packages/spotonlive/sl-laravel-zf2-form) [![License](https://poser.pugx.org/spotonlive/sl-laravel-zf2-form/license)](https://packagist.org/packages/spotonlive/sl-laravel-zf2-form) [![Build Status](https://travis-ci.org/spotonlive/sl-laravel-zf2-form.svg?branch=master)](https://travis-ci.org/spotonlive/sl-laravel-zf2-form) [![Code Climate](https://codeclimate.com/github/spotonlive/sl-laravel-zf2-form/badges/gpa.svg)](https://codeclimate.com/github/spotonlive/sl-laravel-zf2-form) [![Test Coverage](https://codeclimate.com/github/spotonlive/sl-laravel-zf2-form/badges/coverage.svg)](https://codeclimate.com/github/spotonlive/sl-laravel-zf2-form/coverage)
+
 ## Installation
 
 ### Composer
