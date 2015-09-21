@@ -22,7 +22,8 @@
   "require": {
     "php": ">=5.4.0",
     "zendframework/zend-form": "2.5.*",
-    "zendframework/zend-view": "2.5.*"
+    "zendframework/zend-view": "2.5.*",
+    "zendframework/zend-escape": "2.5.*"
   },
 
   "require-dev": {
