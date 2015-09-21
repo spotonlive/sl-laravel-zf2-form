@@ -1,0 +1,36 @@
+{
+  "name": "spotonlive/sl-laravel-zf2-form",
+  "type": "library",
+  "description": "ZF2 Forms in Laravel 5.1",
+  "keywords": [
+    "zf2",
+    "zend framework",
+    "form",
+    "laravel"
+  ],
+  "homepage": "https://github.com/spotonlive/sl-laravel-zf2-form",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nikolaj Petersen",
+      "email": "nikolaj.lovenhardt@gmail.com",
+      "homepage": "http://spotonmarketing.dk"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "zendframework/zend-form": "2.5.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "laravel/framework": "~5.1",
+    "codeclimate/php-test-reporter": "dev-master",
+    "phpmd/phpmd" : "1.4.*",
+    "squizlabs/php_codesniffer" : "1.5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SpotOnLive\\LaravelZf2Form\\": "src/SpotOnLive/LaravelZf2Form/"
+    }
+  }
+}
