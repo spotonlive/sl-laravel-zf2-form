@@ -31,7 +31,8 @@
     "laravel/framework": "~5.1",
     "codeclimate/php-test-reporter": "dev-master",
     "phpmd/phpmd" : "1.4.*",
-    "squizlabs/php_codesniffer" : "1.5.*"
+    "squizlabs/php_codesniffer" : "1.5.*",
+    "zendframework/zend-i18n": "2.5.*"
   },
 
   "autoload": {

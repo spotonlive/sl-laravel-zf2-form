@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f8b8394a06fd1bf7e40e412caaa3ae76",
-    "content-hash": "fa3505bfc81320fa0a688202f3bd15ec",
+    "hash": "f0be6872bc5133b9a9deef1b290ca2c3",
+    "content-hash": "e9b9f090b615fa78162645c1bbd2abdb",
     "packages": [
         {
             "name": "zendframework/zend-escaper",
@@ -3738,6 +3738,69 @@
                 "environment"
             ],
             "time": "2015-05-30 15:59:26"
+        },
+        {
+            "name": "zendframework/zend-i18n",
+            "version": "2.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-i18n.git",
+                "reference": "509271eb7947e4aabebfc376104179cffea42696"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-i18n/zipball/509271eb7947e4aabebfc376104179cffea42696",
+                "reference": "509271eb7947e4aabebfc376104179cffea42696",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.23",
+                "zendframework/zend-stdlib": "~2.5"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "1.7.*",
+                "phpunit/phpunit": "~4.0",
+                "zendframework/zend-cache": "~2.5",
+                "zendframework/zend-config": "~2.5",
+                "zendframework/zend-eventmanager": "~2.5",
+                "zendframework/zend-filter": "~2.5",
+                "zendframework/zend-servicemanager": "~2.5",
+                "zendframework/zend-validator": "~2.5",
+                "zendframework/zend-view": "~2.5"
+            },
+            "suggest": {
+                "ext-intl": "Required for most features of Zend\\I18n; included in default builds of PHP",
+                "zendframework/zend-cache": "Zend\\Cache component",
+                "zendframework/zend-config": "Zend\\Config component",
+                "zendframework/zend-eventmanager": "You should install this package to use the events in the translator",
+                "zendframework/zend-filter": "You should install this package to use the provided filters",
+                "zendframework/zend-resources": "Translation resources",
+                "zendframework/zend-servicemanager": "Zend\\ServiceManager component",
+                "zendframework/zend-validator": "You should install this package to use the provided validators",
+                "zendframework/zend-view": "You should install this package to use the provided view helpers"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev",
+                    "dev-develop": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\I18n\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "homepage": "https://github.com/zendframework/zend-i18n",
+            "keywords": [
+                "i18n",
+                "zf2"
+            ],
+            "time": "2015-06-03 15:32:01"
         }
     ],
     "aliases": [],
