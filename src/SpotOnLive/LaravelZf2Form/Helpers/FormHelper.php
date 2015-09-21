@@ -39,33 +39,36 @@ class FormHelper
      *
      * @param ElementInterface|null $element
      * @param null $buttonContent
-     * @return Helper\FormButton
+     * @return string|Helper\FormButton
      */
     public function button(ElementInterface $element = null, $buttonContent = null)
     {
-        return new Helper\FormButton($element, $buttonContent);
+        $helper = new Helper\FormButton();
+        return $helper->__invoke($element, $buttonContent);
     }
 
     /**
      * Captcha element
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormCaptcha
+     * @return string|Helper\FormCaptcha
      */
     public function captcha(ElementInterface $element = null)
     {
-        return new Helper\FormCaptcha($element);
+        $helper = new Helper\FormCaptcha();
+        return $helper->__invoke($element);
     }
 
     /**
      * Checkbox
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormCheckbox
+     * @return string|Helper\FormInput
      */
     public function checkbox(ElementInterface $element = null)
     {
-        return new Helper\FormCheckbox($element);
+        $helper = new Helper\FormCheckbox();
+        return $helper->__invoke($element);
     }
 
     /**
@@ -73,33 +76,36 @@ class FormHelper
      *
      * @param ElementInterface|null $element
      * @param bool|true $wrap
-     * @return Helper\FormCollection
+     * @return string|Helper\FormCollection
      */
     public function collection(ElementInterface $element = null, $wrap = true)
     {
-        return new Helper\FormCollection($element, $wrap);
+        $helper = new Helper\FormCollection();
+        return $helper->__invoke($element, $wrap);
     }
 
     /**
      * Color
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormColor
+     * @return string|Helper\FormInput
      */
     public function color(ElementInterface $element = null)
     {
-        return new Helper\FormColor($element);
+        $helper = new Helper\FormColor();
+        return $helper->__invoke($element);
     }
 
     /**
      * Date
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormDate
+     * @return string|Helper\FormInput
      */
     public function date(ElementInterface $element = null)
     {
-        return new Helper\FormDate($element);
+        $helper = new Helper\FormDate();
+        return $helper->__invoke($element);
     }
 
     /**
@@ -116,22 +122,24 @@ class FormHelper
      * Datetime
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormDateTime
+     * @return string|Helper\FormInput
      */
     public function dateTime(ElementInterface $element = null)
     {
-        return new Helper\FormDateTime($element);
+        $helper = new Helper\FormDateTime();
+        return $helper->__invoke($element);
     }
 
     /**
      * Datetime local
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormDateTimeLocal
+     * @return string|Helper\FormInput
      */
     public function dateTimeLocal(ElementInterface $element = null)
     {
-        return new Helper\FormDateTimeLocal($element = null);
+        $helper = new Helper\FormDateTimeLocal();
+        return $helper->__invoke($element);
     }
 
     /**
@@ -148,67 +156,73 @@ class FormHelper
      * Element
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormElement
+     * @return string|Helper\FormElement
      */
     public function element(ElementInterface $element = null)
     {
-        return new Helper\FormElement($element);
+        $helper = new Helper\FormElement();
+        return $helper->__invoke($element);
     }
 
     /**
-     * Element errors
+     * Errors
      *
      * @param ElementInterface|null $element
      * @param array $attributes
-     * @return Helper\FormElementErrors
+     * @return string|Helper\FormElementErrors
      */
     public function elementErrors(ElementInterface $element = null, array $attributes = [])
     {
-        return new Helper\FormElementErrors($element, $attributes);
+        $helper = new Helper\FormElementErrors();
+        return $helper->__invoke($element, $attributes);
     }
 
     /**
      * Email
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormEmail
+     * @return string|Helper\FormInput
      */
     public function email(ElementInterface $element = null)
     {
-        return new Helper\FormEmail($element);
+        $helper = new Helper\FormEmail();
+        return $helper->__invoke($element);
     }
 
     /**
      * File
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormFile
+     * @return string|Helper\FormInput
      */
     public function file(ElementInterface $element = null)
     {
-        return new Helper\FormFile($element);
+        $helper = new Helper\FormFile();
+        return $helper->__invoke($element);
     }
 
     /**
      * Hidden
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormHidden
+     * @return string|Helper\FormInput
      */
     public function hidden(ElementInterface $element = null)
     {
-        return new Helper\FormHidden($element);
+        $helper = new Helper\FormHidden();
+        return $helper->__invoke($element);
     }
 
     /**
      * Image
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormImage
+     * @return string|Helper\FormInput
      */
     public function image(ElementInterface $element = null)
     {
-        return new Helper\FormImage($element);
+        $helper = new Helper\FormImage();
+        return $helper->__invoke($element);
     }
 
     /**
@@ -217,7 +231,8 @@ class FormHelper
      */
     public function input(ElementInterface $element = null)
     {
-        return new Helper\FormInput($element);
+        $helper = new Helper\FormInput();
+        return $helper->__invoke($element);
     }
 
     /**
@@ -226,22 +241,24 @@ class FormHelper
      * @param ElementInterface|null $element
      * @param null $labelContent
      * @param null $position
-     * @return Helper\FormLabel
+     * @return string|Helper\FormLabel
      */
     public function label(ElementInterface $element = null, $labelContent = null, $position = null)
     {
-        return new Helper\FormLabel($element, $labelContent, $position);
+        $helper = new Helper\FormLabel();
+        return $helper->__invoke($element, $labelContent, $position);
     }
 
     /**
      * Month
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormMonth
+     * @return string|Helper\FormInput
      */
     public function month(ElementInterface $element = null)
     {
-        return new Helper\FormMonth($element);
+        $helper = new Helper\FormMonth();
+        return $helper->__invoke($element);
     }
 
     /**
@@ -259,33 +276,36 @@ class FormHelper
      *
      * @param ElementInterface|null $element
      * @param null $labelPosition
-     * @return Helper\FormMultiCheckbox
+     * @return string|Helper\FormMultiCheckbox
      */
     public function multiCheckbox(ElementInterface $element = null, $labelPosition = null)
     {
-        return new Helper\FormMultiCheckbox($element, $labelPosition);
+        $helper = new Helper\FormMultiCheckbox();
+        return $helper->__invoke($element, $labelPosition);
     }
 
     /**
      * Number
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormNumber
+     * @return string|Helper\FormInput
      */
     public function number(ElementInterface $element = null)
     {
-        return new Helper\FormNumber($element);
+        $helper = new Helper\FormNumber();
+        return $helper->__invoke($element);
     }
 
     /**
      * Password
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormPassword
+     * @return string|Helper\FormInput
      */
     public function password(ElementInterface $element = null)
     {
-        return new Helper\FormPassword($element);
+        $helper = new Helper\FormPassword();
+        return $helper->__invoke($element);
     }
 
     /**
@@ -293,33 +313,36 @@ class FormHelper
      *
      * @param ElementInterface|null $element
      * @param null $labelPosition
-     * @return Helper\FormRadio
+     * @return string|Helper\FormMultiCheckbox
      */
     public function radio(ElementInterface $element = null, $labelPosition = null)
     {
-        return new Helper\FormRadio($element, $labelPosition);
+        $helper = new Helper\FormRadio();
+        return $helper->__invoke($element, $labelPosition);
     }
 
     /**
      * Range
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormRange
+     * @return string|Helper\FormInput
      */
     public function range(ElementInterface $element = null)
     {
-        return new Helper\FormRange($element);
+        $helper = new Helper\FormRange();
+        return $helper->__invoke($element);
     }
 
     /**
      * Reset
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormReset
+     * @return string|Helper\FormInput
      */
     public function reset(ElementInterface $element = null)
     {
-        return new Helper\FormReset($element);
+        $helper = new Helper\FormReset();
+        return $helper->__invoke($element);
     }
 
     /**
@@ -329,109 +352,119 @@ class FormHelper
      * @param null $labelPosition
      * @param null $renderErrors
      * @param null $partial
-     * @return Helper\FormRow
+     * @return string|Helper\FormRow
      */
     public function row(ElementInterface $element = null, $labelPosition = null, $renderErrors = null, $partial = null)
     {
-        return new Helper\FormRow($element, $labelPosition, $renderErrors, $partial);
+        $helper = new Helper\FormRow();
+        return $helper->__invoke($element, $labelPosition, $renderErrors, $partial);
     }
 
     /**
      * Search
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormSearch
+     * @return string|Helper\FormInput
      */
     public function search(ElementInterface $element = null)
     {
-        return new Helper\FormSearch($element);
+        $helper = new Helper\FormSearch();
+        return $helper->__invoke($element);
     }
 
     /**
      * Select
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormSelect
+     * @return string|Helper\FormSelect
      */
     public function select(ElementInterface $element = null)
     {
-        return new Helper\FormSelect($element);
+        $helper = new Helper\FormSelect();
+        return $helper->__invoke($element);
     }
 
     /**
      * Submit
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormSubmit
+     * @return string|Helper\FormInput
      */
     public function submit(ElementInterface $element = null)
     {
-        return new Helper\FormSubmit($element);
+        $helper = new Helper\FormSubmit();
+        return $helper->__invoke($element);
     }
 
     /**
      * Tel
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormTel
+     * @return string|Helper\FormInput
      */
     public function tel(ElementInterface $element = null)
     {
-        return new Helper\FormTel($element);
+        $helper = new Helper\FormTel();
+        return $helper->__invoke($element);
     }
 
     /**
      * Text
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormText
+     * @return string|Helper\FormInput
      */
     public function text(ElementInterface $element = null)
     {
-        return new Helper\FormText($element);
+        $helper = new Helper\FormText();
+        return $helper->__invoke($element);
     }
 
     /**
      * Textarea
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormTextarea
+     * @return string|Helper\FormTextarea
      */
     public function textarea(ElementInterface $element = null)
     {
-        return new Helper\FormTextarea($element);
+        $helper = new Helper\FormTextarea();
+        return $helper->__invoke($element);
     }
 
     /**
      * Time
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormTime
+     * @return string|Helper\FormInput
      */
     public function time(ElementInterface $element = null)
     {
-        return new Helper\FormTime($element);
+        $helper = new Helper\FormTime();
+        return $helper->__invoke($element);
     }
 
     /**
      * Url
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormUrl
+     * @return string|Helper\FormInput
      */
     public function url(ElementInterface $element = null)
     {
-        return new Helper\FormUrl($element);
+        $helper = new Helper\FormUrl();
+        return $helper->__invoke($element);
     }
 
     /**
      * Week
      *
      * @param ElementInterface|null $element
-     * @return Helper\FormWeek
+     * @return string|Helper\FormInput
      */
     public function week(ElementInterface $element = null)
     {
-        return new Helper\FormWeek($element);
+        $helper = new Helper\FormWeek();
+        return $helper->__invoke($element);
     }
 }
