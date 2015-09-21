@@ -180,4 +180,4 @@ class CreateForm extends Form
 - week
 
 ## Documentation
-Documentation for Zend Framework 2.0 forms: http://framework.zend.com/manual/current/en/user-guide/forms-and-actions.html
+Documentation for Zend Framework 2.0 forms: http://framework.zend.com/manual/current/en/modules/zend.form.elements.html
