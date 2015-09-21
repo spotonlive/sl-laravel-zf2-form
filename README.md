@@ -130,10 +130,7 @@ class CreateForm extends Form
     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
     {!! Form::element($form->get('name')) !!}
-    {!! Form::element($form->get('domain')) !!}
-    {!! Form::element($form->get('active')) !!}
     {!! Form::element($form->get('country')) !!}
-    {!! Form::element($form->get('industry')) !!}
 
     {!! Form::button($form->get('submit')) !!}
 
