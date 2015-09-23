@@ -1,6 +1,6 @@
 <?php
 
-namespace SpotOnLive\LaravelZf2Form\Facades\Helpers;
+namespace SpotOnLive\LaravelZf2FormTest\Facades\Helpers;
 
 use PHPUnit_Framework_TestCase;
 
