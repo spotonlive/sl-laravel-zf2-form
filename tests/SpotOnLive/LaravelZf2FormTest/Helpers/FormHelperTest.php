@@ -251,7 +251,7 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
 
         $result = $this->helper->dateTime($element);
 
-        $this->assertSame('<input name="tester" type="date" value="">', $result);
+        $this->assertSame('<input name="tester" type="datetime" value="">', $result);
     }
 
     public function testDateTimeWithAttributes()
@@ -274,7 +274,7 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
 
         $result = $this->helper->dateTime($element);
 
-        $this->assertSame('<input class="testClass" name="tester" type="date" value="">', $result);
+        $this->assertSame('<input class="testClass" name="tester" type="datetime" value="">', $result);
     }
 
     public function testDateTimeLocal()
@@ -296,7 +296,7 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
 
         $result = $this->helper->dateTimeLocal($element);
 
-        $this->assertSame('<input name="tester" type="date" value="">', $result);
+        $this->assertSame('<input name="tester" type="datetime-local" value="">', $result);
     }
 
     public function testDateTimeLocalWithAttributes()
@@ -319,7 +319,7 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
 
         $result = $this->helper->dateTimeLocal($element);
 
-        $this->assertSame('<input class="testClass" name="tester" type="date" value="">', $result);
+        $this->assertSame('<input class="testClass" name="tester" type="datetime-local" value="">', $result);
     }
 
     public function testElementNoLabel()
@@ -524,6 +524,120 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
         $result = $this->helper->file($element);
 
         $this->assertSame('<input class="testClass" type="file" name="tester">', $result);
+    }
+
+    public function testHidden()
+    {
+        $element = $this->getMock('Zend\Form\Element\Hidden');
+
+        $name = 'tester';
+
+        $attributes = [];
+
+        $element->expects($this->once())
+            ->method('getName')
+            ->willReturn($name);
+
+        $element->expects($this->once())
+            ->method('getAttributes')
+            ->willReturn($attributes);
+
+        $result = $this->helper->hidden($element);
+
+        $this->assertSame('<input name="tester" type="hidden" value="">', $result);
+    }
+
+    public function testHiddenWithAttributes()
+    {
+        $element = $this->getMock('Zend\Form\Element\Hidden');
+
+        $name = 'tester';
+
+        $attributes = [
+            'class' => 'testClass',
+        ];
+
+        $element->expects($this->once())
+            ->method('getName')
+            ->willReturn($name);
+
+        $element->expects($this->once())
+            ->method('getAttributes')
+            ->willReturn($attributes);
+
+        $result = $this->helper->hidden($element);
+
+        $this->assertSame('<input class="testClass" name="tester" type="hidden" value="">', $result);
+    }
+
+    public function testImageNoSrc()
+    {
+        $element = $this->getMock('Zend\Form\Element\Image');
+
+        $this->setExpectedException(
+            'Zend\Form\Exception\DomainException',
+            'Zend\Form\View\Helper\FormImage::render requires that the element has an assigned src; none discovered'
+        );
+
+        $this->helper->image($element);
+    }
+
+    public function testImage()
+    {
+        $element = $this->getMock('Zend\Form\Element\Image');
+
+        $name = 'tester';
+
+        $src = 'testSrc';
+
+        $attributes = [];
+
+        $element->expects($this->once())
+            ->method('getName')
+            ->willReturn($name);
+
+        $element->expects($this->once())
+            ->method('getAttribute')
+            ->with('src')
+            ->willReturn($src);
+
+        $element->expects($this->once())
+            ->method('getAttributes')
+            ->willReturn($attributes);
+
+        $result = $this->helper->image($element);
+
+        $this->assertSame('<input name="tester" type="image">', $result);
+    }
+
+    public function testImageWithAttributes()
+    {
+        $element = $this->getMock('Zend\Form\Element\Image');
+
+        $name = 'tester';
+
+        $src = 'testSrc';
+
+        $attributes = [
+            'class' => 'testClass',
+        ];
+
+        $element->expects($this->once())
+            ->method('getName')
+            ->willReturn($name);
+
+        $element->expects($this->once())
+            ->method('getAttribute')
+            ->with('src')
+            ->willReturn($src);
+
+        $element->expects($this->once())
+            ->method('getAttributes')
+            ->willReturn($attributes);
+
+        $result = $this->helper->image($element);
+
+        $this->assertSame('<input class="testClass" name="tester" type="image">', $result);
     }
 
     public function testLabel()
@@ -842,7 +956,7 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
             '__invoke expects either label content as the second argument, or that the element provided has a label attribute; neither found'
         );
 
-        $this->helper->element($element);
+        $this->helper->row($element);
     }
 
     public function testRow()
@@ -878,7 +992,7 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
             ->method('getAttributes')
             ->willReturn($attributes);
 
-        $result = $this->helper->element($element);
+        $result = $this->helper->row($element);
 
         $this->assertSame('<label for="tester">testLabel</label><input class="testClass" placeholder="testPlaceHolder" name="tester" type="text" value="">', $result);
     }
@@ -934,6 +1048,70 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
         $result = $this->helper->search($element);
 
         $this->assertSame('<input class="testClass" name="tester" type="search" value="">', $result);
+    }
+
+    public function testSelect()
+    {
+        $element = $this->getMock('Zend\Form\Element\Select');
+
+        $name = 'tester';
+
+        $attributes = [];
+
+        $valueOptions = [
+            'a' => 'b',
+            'c' => 'd',
+        ];
+
+        $element->expects($this->once())
+            ->method('getName')
+            ->willReturn($name);
+
+        $element->expects($this->once())
+            ->method('getValueOptions')
+            ->willReturn($valueOptions);
+
+        $element->expects($this->once())
+            ->method('getAttributes')
+            ->willReturn($attributes);
+
+        $result = $this->helper->select($element);
+
+        $this->assertSame('<select name="tester"><option value="a">b</option>
+<option value="c">d</option></select>', $result);
+    }
+
+    public function testSelectWithAttributes()
+    {
+        $element = $this->getMock('Zend\Form\Element\Select');
+
+        $name = 'tester';
+
+        $attributes = [
+            'class' => 'testClass',
+        ];
+
+        $valueOptions = [
+            'a' => 'b',
+            'c' => 'd',
+        ];
+
+        $element->expects($this->once())
+            ->method('getName')
+            ->willReturn($name);
+
+        $element->expects($this->once())
+            ->method('getValueOptions')
+            ->willReturn($valueOptions);
+
+        $element->expects($this->once())
+            ->method('getAttributes')
+            ->willReturn($attributes);
+
+        $result = $this->helper->select($element);
+
+        $this->assertSame('<select class="testClass" name="tester"><option value="a">b</option>
+<option value="c">d</option></select>', $result);
     }
 
     public function testSubmit()

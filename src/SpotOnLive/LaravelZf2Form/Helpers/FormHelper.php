@@ -409,10 +409,48 @@ class FormHelper
      * @param null $partial
      * @return string|Helper\FormRow
      */
-    public function row(ElementInterface $element = null, $labelPosition = null, $renderErrors = null, $partial = null)
+    public function row(ElementInterface $element = null)
     {
-        $helper = new Helper\FormRow();
-        return $helper->__invoke($element, $labelPosition, $renderErrors, $partial);
+        $method = str_replace(
+            'Zend\Form\Element\\',
+            '',
+            get_class($element)
+        );
+
+        $className = '\Zend\Form\View\Helper\Form' . $method;
+
+        if (class_exists($className)) {
+            /** @var AbstractHelper|null $helper */
+            $helper = new $className;
+        }
+
+        if ($parentClass = $this->parentClassName($method)) {
+            $method = str_replace(
+                'Zend\Form\Element\\',
+                '',
+                $parentClass
+            );
+
+            $className = '\Zend\Form\View\Helper\Form' . $method;
+
+            if (class_exists($className)) {
+                /** @var AbstractHelper|null $helper */
+                $helper = new $className;
+            }
+        }
+
+        if (isset($helper)) {
+            $label = new \Zend\Form\View\Helper\FormLabel();
+            $elementErrors = new \Zend\Form\View\Helper\FormElementErrors();
+
+            $return = $label->__invoke($element);
+            $return .= $helper->render($element);
+            $return .= $elementErrors->__invoke($element);
+
+            return $return;
+        }
+
+        return '';
     }
 
     /**
