@@ -20,6 +20,10 @@
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>
             <directory suffix=".php">./tests</directory>
+
+            <exclude>
+                <directory suffix=".php">./src/SpotOnLive/LaravelZf2Form/Providers</directory>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>

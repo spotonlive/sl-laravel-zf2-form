@@ -188,7 +188,7 @@ class FormHelper
             }
         }
 
-        if ($helper) {
+        if (isset($helper)) {
             $label = new \Zend\Form\View\Helper\FormLabel();
             $elementErrors = new \Zend\Form\View\Helper\FormElementErrors();
 
