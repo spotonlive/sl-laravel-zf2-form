@@ -249,7 +249,7 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
             ->method('getAttributes')
             ->willReturn($attributes);
 
-        $result = $this->helper->date($element);
+        $result = $this->helper->dateTime($element);
 
         $this->assertSame('<input name="tester" type="date" value="">', $result);
     }
@@ -272,7 +272,7 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
             ->method('getAttributes')
             ->willReturn($attributes);
 
-        $result = $this->helper->date($element);
+        $result = $this->helper->dateTime($element);
 
         $this->assertSame('<input class="testClass" name="tester" type="date" value="">', $result);
     }
@@ -294,7 +294,7 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
             ->method('getAttributes')
             ->willReturn($attributes);
 
-        $result = $this->helper->date($element);
+        $result = $this->helper->dateTimeLocal($element);
 
         $this->assertSame('<input name="tester" type="date" value="">', $result);
     }
@@ -317,7 +317,7 @@ class FormHelperTest extends PHPUnit_Framework_TestCase
             ->method('getAttributes')
             ->willReturn($attributes);
 
-        $result = $this->helper->date($element);
+        $result = $this->helper->dateTimeLocal($element);
 
         $this->assertSame('<input class="testClass" name="tester" type="date" value="">', $result);
     }
