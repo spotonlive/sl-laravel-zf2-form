@@ -23,7 +23,8 @@
     "php": ">=5.4.0",
     "zendframework/zend-form": "2.5.*",
     "zendframework/zend-view": "2.5.*",
-    "zendframework/zend-escaper": "2.5.*"
+    "zendframework/zend-escaper": "2.5.*",
+    "zendframework/zend-i18n": "~2.1"
   },
 
   "require-dev": {
