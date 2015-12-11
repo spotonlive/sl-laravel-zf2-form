@@ -80,7 +80,7 @@ class FormHelper
      */
     public function collection(ElementInterface $element = null, $wrap = true)
     {
-        $helper = new Helper\FormCollection();
+        $helper = new \SpotOnLive\LaravelZf2Form\View\Helper\FormCollection();
         return $helper->__invoke($element, $wrap);
     }
 
@@ -160,46 +160,8 @@ class FormHelper
      */
     public function element(ElementInterface $element = null)
     {
-        $method = str_replace(
-            'Zend\Form\Element\\',
-            '',
-            get_class($element)
-        );
-
-        $className = '\Zend\Form\View\Helper\Form' . $method;
-
-        if (class_exists($className)) {
-            /** @var AbstractHelper|null $helper */
-            $helper = new $className;
-        }
-
-        if ($parentClass = $this->parentClassName($method)) {
-            $method = str_replace(
-                'Zend\Form\Element\\',
-                '',
-                $parentClass
-            );
-
-            $className = '\Zend\Form\View\Helper\Form' . $method;
-
-            if (class_exists($className)) {
-                /** @var AbstractHelper|null $helper */
-                $helper = new $className;
-            }
-        }
-
-        if (isset($helper)) {
-            $label = new \Zend\Form\View\Helper\FormLabel();
-            $elementErrors = new \Zend\Form\View\Helper\FormElementErrors();
-
-            $return = $label->__invoke($element);
-            $return .= $helper->render($element);
-            $return .= $elementErrors->__invoke($element);
-
-            return $return;
-        }
-
-        return '';
+        $helper = new \SpotOnLive\LaravelZf2Form\View\Helper\FormElement();
+        return $helper->__invoke($element);
     }
 
     /**
@@ -409,8 +371,20 @@ class FormHelper
      * @param null $partial
      * @return string|Helper\FormRow
      */
-    public function row(ElementInterface $element = null)
+    /**
+     * Row
+     *
+     * @param ElementInterface|null $element
+     * @param null $labelPosition
+     * @param null $renderErrors
+     * @param null $partial
+     * @return null|string|Helper\FormLabel
+     */
+    public function row(ElementInterface $element = null, $labelPosition = null, $renderErrors = null, $partial = null)
     {
+        $helper = new \SpotOnLive\LaravelZf2Form\View\Helper\FormRow();
+        return $helper->__invoke($element, $labelPosition, $renderErrors, $partial);
+
         $method = str_replace(
             'Zend\Form\Element\\',
             '',
@@ -443,7 +417,11 @@ class FormHelper
             $label = new \Zend\Form\View\Helper\FormLabel();
             $elementErrors = new \Zend\Form\View\Helper\FormElementErrors();
 
-            $return = $label->__invoke($element);
+            $return = null;
+
+            if ($element->getLabel()) {
+                $return = $label->__invoke($element);
+            }
             $return .= $helper->render($element);
             $return .= $elementErrors->__invoke($element);
 
