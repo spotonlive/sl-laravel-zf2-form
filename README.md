@@ -15,7 +15,7 @@ Add the helper/facade to your aliases.
 ```php
 return [
     'aliases' => [
-        'Form' => 'SpotOnLive\LaravelZf2Form\Facades\Helpers\FormHelperFacade',
+        'Form' => SpotOnLive\LaravelZf2Form\Facades\Helpers\FormHelperFacade::class,
     ]
 ];
 ```
@@ -28,17 +28,21 @@ return [
 
 namespace App\Forms\Customer;
 
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
-use Doctrine\Common\Persistence\ObjectManager;
 use Zend\Form\Form;
+use App\Entities\Country;
+use App\Entities\Customer;
+use Zend\Form\Element\Text;
 use Zend\InputFilter\FileInput;
 use Zend\InputFilter\InputFilter;
-use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
+use DoctrineModule\Form\Element\ObjectSelect;
+use Doctrine\Common\Persistence\ObjectManager;
+use Zend\InputFilter\InputFilterAwareInterface;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 class CreateForm extends Form
 {
-    /** @var  \Doctrine\Common\Persistence\ObjectManager */
+    /** @var ObjectManager */
     protected $objectManager;
 
     protected $inputFilter;
@@ -47,14 +51,14 @@ class CreateForm extends Form
     {
         $this->objectManager = $objectManager;
 
-        $this->setHydrator(new DoctrineHydrator($objectManager, 'App\Entities\Customer'));
-        $this->setObject(new \App\Entities\Customer());
+        $this->setHydrator(new DoctrineHydrator($objectManager, Customer::class));
+        $this->setObject(new Customer());
 
         parent::__construct('create-customer');
 
         $this->add([
             'name' => 'name',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => Text::class,
             'options' => [
                 'label' => 'Name',
             ],
@@ -66,14 +70,18 @@ class CreateForm extends Form
 
         $this->add([
             'name' => 'country',
-            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+            'type' => ObjectSelect::class,
             'options' => [
                 'type' => 'select',
                 'label' => 'Country',
                 'object_manager' => $objectManager,
-                'target_class' => 'App\Entities\Country',
-                'label_generator' => function($country) {
-                    return $country->getName() . ' (' . $country->getCode() . ')';
+                'target_class' => Country::class,
+                'label_generator' => function(Country $country) {
+                    return sprintf(
+                        '%s (%s),
+                        $country->getName(),
+                        $country->getCode()
+                    );
                 },
                 'empty_option' => '-- Select country --',
             ],
@@ -129,7 +137,8 @@ class CreateForm extends Form
     <h1>{{_('Form')}}</h1>
 
     {!! Form::openTag($form) !!}
-    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+
+    {!! csrf_field() !!}
 
     {!! Form::row($form->get('name')) !!}
     {!! Form::row($form->get('country')) !!}
@@ -182,4 +191,4 @@ class CreateForm extends Form
 - week
 
 ## Documentation
-Documentation for Zend Framework 2.0 forms: http://framework.zend.com/manual/current/en/modules/zend.form.elements.html
+Documentation for Zend Framework 2 forms: http://framework.zend.com/manual/current/en/modules/zend.form.elements.html
