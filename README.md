@@ -78,7 +78,7 @@ class CreateForm extends Form
                 'target_class' => Country::class,
                 'label_generator' => function(Country $country) {
                     return sprintf(
-                        '%s (%s),
+                        '%s (%s)',
                         $country->getName(),
                         $country->getCode()
                     );
